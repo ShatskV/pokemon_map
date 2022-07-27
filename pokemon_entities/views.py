@@ -68,7 +68,7 @@ def show_pokemon(request, pokemon_id):
     if not pokemon:
         return HttpResponseNotFound('<h1>Такой покемон не найден</h1>')
        
-    pokemon_entities = pokemon.pokemon_entities.filter(appeared_at__lt=localtime(), disappeared_at__gt=localtime())
+    pokemon_entities = pokemon.entities.filter(appeared_at__lt=localtime(), disappeared_at__gt=localtime())
     if pokemon.image:
         img_url = request.build_absolute_uri(pokemon.image.url)
     else:
